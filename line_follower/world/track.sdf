@@ -1,0 +1,216 @@
+<sdf version='1.10'>
+  <world name='empty'>
+    <physics name='1ms' type='ignored'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
+    <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
+    <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
+    <plugin name='gz::sim::systems::Contact' filename='gz-sim-contact-system'/>
+    <gravity>0 0 -9.8000000000000007</gravity>
+    <magnetic_field>5.5644999999999998e-06 2.2875799999999999e-05 -4.2388400000000002e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.400000006 0.400000006 0.400000006 1</ambient>
+      <background>0.699999988 0.699999988 0.699999988 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <model name='ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.800000012 0.800000012 0.800000012 1</ambient>
+            <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+            <specular>0.800000012 0.800000012 0.800000012 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='track'>
+        <link name='line1'>
+            <inertial>
+                <pose>1.0842021724855039e-16 2.3999999999999999 0 0 0 0</pose>
+                <mass>0.0040000000000000001</mass>
+                <inertia>
+                    <ixx>0.01155999999999999</ixx>
+                    <ixy>1.040834085586084e-18</ixy>
+                    <ixz>0</ixz>
+                    <iyy>0.013559999999999999</iyy>
+                    <iyz>0</iyz>
+                    <izz>0.025080000000000002</izz>
+                </inertia>
+            </inertial>
+            <collision name='line1_collision'>
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <box>
+                        <size>5 0.20000000000000001 0.001</size>
+                    </box>
+                </geometry>
+            </collision>
+            <collision name='line1_fixed_joint_lump__line2_collision_1'>
+                <pose>2.6000000000000001 2.3999999999999999 0 0 0 1.5707</pose>
+                <geometry>
+                    <box>
+                        <size>5 0.20000000000000001 0.001</size>
+                    </box>
+                </geometry>
+            </collision>
+            <collision name='line1_fixed_joint_lump__line3_collision_2'>
+                <pose>0 4.7999999999999998 0 0 0 0</pose>
+                <geometry>
+                    <box>
+                        <size>5 0.20000000000000001 0.001</size>
+                    </box>
+                </geometry>
+            </collision>
+            <collision name='line1_fixed_joint_lump__line4_collision_3'>
+                <pose>-2.6000000000000001 2.3999999999999999 0 0 0 1.5707</pose>
+                    <geometry>
+                        <box>
+                            <size>5 0.20000000000000001 0.001</size>
+                        </box>
+                    </geometry>
+            </collision>
+        <visual name='line1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>5 0.20000000000000001 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+      <visual name='line1_fixed_joint_lump__line2_visual_1'>
+        <pose>2.6000000000000001 2.3999999999999999 0 0 0 1.5707</pose>
+        <geometry>
+          <box>
+            <size>5 0.20000000000000001 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+      <visual name='line1_fixed_joint_lump__line3_visual_2'>
+        <pose>0 4.7999999999999998 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>5 0.20000000000000001 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+      <visual name='line1_fixed_joint_lump__line4_visual_3'>
+        <pose>-2.6000000000000001 2.3999999999999999 0 0 0 1.5707</pose>
+        <geometry>
+          <box>
+            <size>5 0.20000000000000001 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <frame name='joint1' attached_to='line1'>
+      <pose>2.6000000000000001 2.3999999999999999 0 0 0 0</pose>
+    </frame>
+    <frame name='line2' attached_to='joint1'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='joint2' attached_to='line1'>
+      <pose>0 4.7999999999999998 0 0 0 0</pose>
+    </frame>
+    <frame name='line3' attached_to='joint2'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='joint3' attached_to='line1'>
+      <pose>-2.6000000000000001 2.3999999999999999 0 0 0 0</pose>
+    </frame>
+    <frame name='line4' attached_to='joint3'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <joint name='fixed_joint' type='fixed'>
+        <parent>world</parent>
+        <child>line1</child>
+        <pose>0 0 0 0 0 0</pose>
+    </joint>
+  </model>
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.10000000000000001 -0.90000000000000002</direction>
+      <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+      <specular>0.200000003 0.200000003 0.200000003 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.0099999997764825821</linear>
+        <constant>0.89999997615814209</constant>
+        <quadratic>0.0010000000474974513</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+  </world>
+</sdf>

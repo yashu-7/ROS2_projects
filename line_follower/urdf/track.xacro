@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot name="track">
+    <link name="line1">
+        <visual>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry> 
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+        </inertial>
+    </link>
+
+    <link name="line2">
+        <visual>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry>
+            <origin rpy="0.0 0.0 1.5707"/>
+        </visual>
+    
+        <collision>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry>
+            <origin rpy="0.0 0.0 1.5707"/>
+        </collision>
+
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+        </inertial>
+    </link>
+
+    <link name="line3">
+        <visual>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry> 
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+        </inertial>
+    </link>
+
+    <link name="line4">
+        <visual>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry> 
+            <origin rpy="0.0 0.0 1.5707"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="5.0 0.2 0.001"/>
+            </geometry>
+            <origin rpy="0.0 0.0 1.5707"/>
+        </collision>
+
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+        </inertial>
+    </link>
+
+    <joint name="joint1" type="fixed">
+        <parent link="line1"/>
+        <child link="line2"/>
+        <origin xyz="2.6 2.4 0.0"/>
+    </joint>
+
+    <joint name="joint2" type="fixed">
+        <parent link="line1"/>
+        <child link="line3"/>
+        <origin xyz="0.0 4.8 0.0"/>
+    </joint>
+
+    <joint name="joint3" type="fixed">
+        <parent link="line1"/>
+        <child link="line4"/>
+        <origin xyz="-2.6 2.4 0.0"/>
+    </joint>
+
+</robot>
