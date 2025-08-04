@@ -21,7 +21,6 @@ This repository houses two ROS 2 projects developed with ROS 2 Jazzy Jalisco on 
    - 📍 **Localization**: Adaptive Monte Carlo Localization (AMCL).
    - 📍 **Planning**: A* global planner and DWB local planner for smooth navigation and obstacle avoidance.
    - 📍 **Simulation**: A Gazebo-based industrial environment with narrow aisles and dynamic obstacles.
-   - 📍 **Performance**: 95% mission success rate and 0.05m path tracking accuracy after tuning.
 
 2. **Line Follower** 🛤️: A line-following robot using a proportional (P) control algorithm. It processes sensor data (e.g., IR sensors) to stay on track, perfect for learning ROS 2 and control systems.
 
@@ -73,8 +72,8 @@ ROS2_projects/
 │   ├── worlds/                    # Gazebo industrial environment
 │   ├── config/                    # Nav2, SLAM, and AMCL configs
 │   └── maps/                      # Generated 2D maps
-├── lline_follower/                # Line-following robot
-│   ├── scripts/                   # Python scripts for P-control
+├── line_follower/                # Line-following robot
+│   ├── line_follower/                   # Python scripts for P-control
 │   ├── launch/                    # Launch files for simulation/hardware
 │   └── config/                    # P-control parameters
 ├── README.md                      # This file 📖
@@ -84,13 +83,13 @@ ROS2_projects/
 ## Running the Corbis Navigation Stack 🚚
 1. **Launch Gazebo Simulation**:
    ```bash
-   ros2 launch corbis gazebo_simulation.launch.py
+   ros2 launch corbis simulation.launch.py
    ```
    This spawns the differential drive robot with LiDAR and IMU in a Gazebo industrial environment. 🌍
 
 2. **Generate a Map**:
    ```bash
-   ros2 launch corbis slam.launch.py
+   ros2 launch corbis mapping.launch.py
    ```
    Teleoperate the robot using:
    ```bash
@@ -110,7 +109,7 @@ ROS2_projects/
 ## Running the Line Follower 🛤️
 1. **Launch the Line Follower**:
    ```bash
-   ros2 launch lline_follower line_follower.launch.py
+   ros2 launch line_follower gz_sim.launch.py
    ```
    This runs the line-following bot in Gazebo (if simulated) or on a physical robot with line sensors. 🔍
 
@@ -122,7 +121,7 @@ ROS2_projects/
    left_speed = base_speed + correction     # Adjust motor speeds
    right_speed = base_speed - correction
    ```
-   Tune the `kp` gain in `lline_follower/config/params.yaml`. 🎛️
+   Tune the `kp` gain in `p_control.py code`. 🎛️
 
 3. **Simulation vs. Hardware**:
    - **Simulation**: Ensure the Gazebo world has a visible line (e.g., black on white). 🖼️
@@ -135,11 +134,10 @@ For **Corbis**:
    ros2 run rqt_reconfigure rqt_reconfigure
    ```
 2. Select `/dwb_controller` to tune parameters like `max_vel_x`, `max_vel_theta`, `heading`, `dist`, and `velocity` weights.
-3. Monitor path tracking in RViz, aiming for ~0.05m cross-track error. 📏
-4. Save tuned parameters to `corbis/config/dwb_params.yaml`. 💾
+3. Save tuned parameters. 💾
 
 For **Line Follower**:
-- Edit `kp` in `lline_follower/config/params.yaml` manually or extend to ROS 2 parameters for GUI tuning. 🛠️
+- Edit `kp` in `p_control code` manually or extend to ROS 2 parameters for GUI tuning. 🛠️
 
 ## Contributing 🤝
 We love contributions! To get started:
