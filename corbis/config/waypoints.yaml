@@ -1,0 +1,36 @@
+metadata:
+  Target Frame: map
+  Source Frame: base_link
+  timestamp: '2025-05-13T00:17:08.879414'
+  total_waypoints: 3
+waypoints:
+  Cement:
+    position:
+      x: 4.960280881279826
+      y: -1.0224313521060693e-08
+      z: 0.06
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -6.212126146820651e-09
+      w: 1.0
+  Loader:
+    position:
+      x: -5.545711184723089
+      y: -0.0001329435366007748
+      z: 0.06
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 4.016206857071798e-06
+      w: 0.999999999991935
+  Disposal:
+    position:
+      x: -2.349364861951397
+      y: 4.996984209382115
+      z: 0.059999999999999984
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.6998578529646597
+      w: 0.7142821470845373

@@ -1,0 +1,2 @@
+for serialize maps
+/home/yaswanth/.local/share/Trash/files -> default location of the maps that are saved (maybe copy after it is created to /home/yaswanth/ros2_ws/src/corbis/maps)

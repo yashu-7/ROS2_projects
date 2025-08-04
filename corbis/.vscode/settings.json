@@ -1,0 +1,33 @@
+{
+    "ros.distro": "jazzy",
+    "python.autoComplete.extraPaths": [
+        "/home/yaswanth/ros2_ws/install/testing_ws/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/robot_basics/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/new_assem/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/manipulator_2d/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/localization_mapping/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/line_follower/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/haveli_slam/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/ground_bot_basics/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/gps_points_navigation/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/bol/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/auros/lib/python3.12/site-packages",
+        "/home/yaswanth/yaswanth_ws/install/bot_description/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/yaswanth/ros2_ws/install/testing_ws/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/robot_basics/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/new_assem/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/manipulator_2d/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/localization_mapping/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/line_follower/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/haveli_slam/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/ground_bot_basics/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/gps_points_navigation/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/bol/lib/python3.12/site-packages",
+        "/home/yaswanth/ros2_ws/install/auros/lib/python3.12/site-packages",
+        "/home/yaswanth/yaswanth_ws/install/bot_description/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ]
+}

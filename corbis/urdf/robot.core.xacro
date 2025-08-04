@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<robot name="corbis" xmlns:xacro="htpp://www.ros.org/wiki/xacro">
+    
+    <xacro:property name="body_radius" value="0.2"/>
+    <xacro:property name="body_height" value="0.03"/>
+    <xacro:property name="wheel_radius" value="0.06"/>
+    <xacro:property name="wheel_height" value="0.03"/>
+
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+    </material> 
+
+    <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+    </material>
+
+    <material name="gray">
+        <color rgba="0.5 0.5 0.5 0.8"/>
+    </material>
+
+    <material name="green">
+        <color rgba="0.0 1.0 0.0 0.8"/>
+    </material>
+
+    <link name="base_footprint"/>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder radius="${body_radius}" length="${body_height}"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <cylinder radius="${body_radius}" length="${body_height}"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_cylinder mass="0.25" length="${body_height}" radius="${body_radius}">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0.0 0.0 ${wheel_radius}"/>
+    </joint>
+
+    <link name="right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_height}"/>
+            </geometry>
+            <origin rpy="1.5707 0.0 0.0"/>
+            <material name="black"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_height}"/>
+            </geometry>
+            <origin rpy="1.5707 0.0 0.0"/>
+        </collision>
+
+        <xacro:inertial_cylinder mass="0.25" length="${wheel_height}" radius="${wheel_radius}">
+            <origin xyz="0.0 0.0 0.0" rpy="1.5707 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="right_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="0.0 -${body_radius + (wheel_height / 2)} 0.0"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_height}"/>
+            </geometry>
+            <origin rpy="1.5707 0.0 0.0"/>
+            <material name="black"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_height}"/>
+            </geometry>
+            <origin rpy="1.5707 0.0 0.0"/>
+        </collision>
+
+        <xacro:inertial_cylinder mass="0.25" length="${wheel_height}" radius="${wheel_radius}">
+            <origin xyz="0.0 0.0 0.0" rpy="1.5707 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz="0.0 ${body_radius + (wheel_height / 2)} 0.0"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="front_caster">
+        <visual>
+            <geometry>
+                <sphere radius="${wheel_radius / 2}"/>
+            </geometry>
+            <material name="gray"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="${wheel_radius / 2}"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_sphere mass="0.01" radius="${wheel_radius / 2}">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <joint name="front_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_caster"/>
+        <origin xyz="${body_radius / 2} 0.0 -${wheel_radius / 2}"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="back_caster">
+        <visual>
+            <geometry>
+                <sphere radius="${wheel_radius / 2}"/>
+            </geometry>
+            <material name="gray"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="${wheel_radius / 2}"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_sphere mass="0.01" radius="${wheel_radius / 2}">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <joint name="back_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_caster"/>
+        <origin xyz="-${body_radius / 2} 0.0 -${wheel_radius / 2}"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="scan_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.04" length="0.03"/>
+            </geometry>
+            <origin xyz="0.0 0.0 -0.0075"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <cylinder radius="0.04" length="0.03"/>
+            </geometry>
+            <origin xyz="0.0 0.0 -0.0075"/>
+        </collision>
+
+        <xacro:inertial_cylinder mass="0.15" length="0.03" radius="0.04">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="scan_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="scan_link"/>
+        <origin xyz="${body_radius / 1.5} 0.0 ${(body_height / 2) + 0.047}"/>
+    </joint>
+
+    <link name="camera_link">
+        <visual>
+            <geometry>
+                <box size="0.005 0.1 0.03"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="0.005 0.1 0.03"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_box mass="0.1" x="0.005" y="0.1" z="0.03">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box> 
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+        <origin xyz="${body_radius + 0.0025} 0.0 0.0"/>
+    </joint>
+
+    <link name="imu_link">
+        <visual>
+            <geometry>
+                <box size="0.01 0.01 0.001"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="0.01 0.01 0.001"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_box mass="0.1" x="0.01" y="0.01" z="0.001">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_box> 
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="imu_link"/>
+        <origin xyz="0.0 0.0 ${(body_height / 2) + 0.0005}"/>
+    </joint>
+
+    <link name="navsat_link"/>
+
+    <joint name="navsat_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="navsat_link"/>
+    </joint>
+
+</robot>
